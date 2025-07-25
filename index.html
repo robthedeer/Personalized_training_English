@@ -255,9 +255,9 @@
             border-radius: 50px;
             transition: var(--transition);
             box-shadow: 0 5px 20px rgba(246, 174, 45, 0.4);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.9s;
+            /* Remove animation for buttons */
+            opacity: 1;
+            transform: translateY(0);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: 1rem;
@@ -345,7 +345,7 @@
 
         .about-image {
             flex: 1;
-            max-width: 175px; /* Reduced by 50% */
+            max-width: 200px; /* Slightly larger */
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
@@ -365,10 +365,6 @@
 
         .about-text {
             flex: 1;
-            padding: 25px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            border-left: 4px solid var(--accent);
         }
 
         .about-text h3 {
@@ -378,10 +374,30 @@
             color: var(--accent);
         }
 
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem; /* Increased font size */
-            line-height: 1.7;
+        /* New grid layout for About Me text */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .about-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .about-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .about-item p {
+            font-size: 0.95rem;
+            line-height: 1.6;
             color: rgba(255,255,255,0.9);
         }
 
@@ -425,72 +441,6 @@
             margin-bottom: 15px;
         }
 
-        .why-choose {
-            position: relative;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px 20px; /* Reduced padding */
-            text-align: center;
-            transition: var(--transition);
-            transform: translateY(30px);
-            opacity: 0;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .feature-card.animate {
-            animation: fadeUp 0.8s forwards;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(10, 36, 99, 0.3);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-            border: 1px solid rgba(246, 174, 45, 0.3);
-        }
-
-        .feature-icon {
-            width: 60px; /* Reduced size */
-            height: 60px; /* Reduced size */
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px; /* Adjusted margin */
-            font-size: 24px; /* Reduced font size */
-            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, var(--accent) 0%, #ff9800 100%);
-            color: var(--primary);
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem; /* Reduced font size */
-            margin-bottom: 12px;
-            color: white;
-        }
-
-        .feature-card p {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.95rem; /* Reduced font size */
-        }
-
         .courses {
             position: relative;
         }
@@ -509,8 +459,8 @@
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduced min width */
-            gap: 25px; /* Reduced gap */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
         }
 
         .course-card {
@@ -518,16 +468,10 @@
             border-radius: 15px;
             overflow: hidden;
             transition: var(--transition);
-            transform: translateY(30px) rotate(0deg);
-            opacity: 0;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             perspective: 1000px;
-        }
-
-        .course-card.animate {
-            animation: fadeUp 0.8s forwards;
         }
 
         .course-card:hover {
@@ -537,7 +481,7 @@
         }
 
         .course-img {
-            height: 150px; /* Reduced height */
+            height: 150px; 
             background-size: cover;
             background-position: center;
             position: relative;
@@ -555,37 +499,35 @@
         }
 
         .course-content {
-            padding: 20px; /* Reduced padding */
+            padding: 20px; 
         }
 
         .course-content h3 {
-            font-size: 1.3rem; /* Reduced font size */
+            font-size: 1.3rem; 
             margin-bottom: 10px;
             color: white;
-            min-height: auto; /* Removed fixed height */
         }
 
         .course-content p {
             margin-bottom: 15px;
             color: rgba(255,255,255,0.8);
-            min-height: auto; /* Removed fixed height */
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 0.9rem; 
         }
 
         .course-meta {
             display: flex;
             gap: 12px;
-            margin-bottom: 15px; /* Reduced margin */
+            margin-bottom: 15px; 
         }
 
         .meta-btn {
             flex: 1;
-            padding: 8px 10px; /* Reduced padding */
+            padding: 8px 10px; 
             background: rgba(10, 36, 99, 0.5);
             border-radius: 8px;
             text-align: center;
             font-weight: 600;
-            font-size: 0.85rem; /* Reduced font size */
+            font-size: 0.85rem; 
             color: var(--accent);
             border: 1px solid rgba(246, 174, 45, 0.3);
             transition: var(--transition);
@@ -603,11 +545,11 @@
 
         .course-btn {
             flex: 1;
-            padding: 10px 12px; /* Reduced padding */
+            padding: 10px 12px; 
             text-align: center;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.85rem; /* Reduced font size */
+            font-size: 0.85rem; 
             transition: var(--transition);
             text-decoration: none;
         }
@@ -625,6 +567,66 @@
         .course-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .why-choose {
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px 20px; 
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(10, 36, 99, 0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(246, 174, 45, 0.3);
+        }
+
+        .feature-icon {
+            width: 60px; 
+            height: 60px; 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px; 
+            font-size: 24px; 
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, var(--accent) 0%, #ff9800 100%);
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem; 
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .feature-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem; 
         }
 
         .roadmap {
@@ -901,6 +903,35 @@
             background-size: 12px;
         }
 
+        .form-btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(246, 174, 45, 0.4);
+            /* Remove animation for form button */
+            opacity: 1;
+            transform: translateY(0);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            width: 100%;
+        }
+
+        .form-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(246, 174, 45, 0.6);
+        }
+
         .cta {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -1164,7 +1195,7 @@
             }
 
             .about-image {
-                max-width: 175px; /* Reduced by 50% */
+                max-width: 200px;
                 margin: 0 auto 30px;
             }
         }
@@ -1261,6 +1292,10 @@
             .course-actions {
                 flex-direction: column;
             }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1321,8 +1356,8 @@
         <nav class="sidebar-nav">
             <a href="#hero"><i class="fas fa-home"></i> Home</a>
             <a href="#about"><i class="fas fa-user"></i> About Me</a>
-            <a href="#why"><i class="fas fa-star"></i> Why Choose Me</a>
             <a href="#courses"><i class="fas fa-graduation-cap"></i> Premium Programs</a>
+            <a href="#why"><i class="fas fa-star"></i> Why Choose Me</a>
             <a href="#roadmap"><i class="fas fa-road"></i> Roadmap</a>
             <a href="#testimonials"><i class="fas fa-comments"></i> Success Stories</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
@@ -1367,14 +1402,20 @@
                 </div>
                 <div class="about-text">
                     <h3>Robert Nyamugada</h3>
-                    <p>Passionate educator and entrepreneur with <span class="highlight">7 years of experience</span> teaching English to children and adults.</p>
-                    
-                    <p>Founder of <span class="highlight">QESkids AI</span> (English/Programming school) and <span class="highlight">Cm Services</span> (B2B training).</p>
-                    
-                    <p>TEFL certified with expertise in Cambridge, Oxford, and British Council methodologies.</p>
-                    
-                    <p>Advanced Russian speaker with certification. Dedicated to helping educators grow.</p>
-                    
+                    <div class="about-grid">
+                        <div class="about-item">
+                            <p>Passionate educator and entrepreneur with <span class="highlight">7 years of experience</span> teaching English to children and adults.</p>
+                        </div>
+                        <div class="about-item">
+                            <p>Founder of <span class="highlight">QESkids AI</span> (English/Programming school) and <span class="highlight">Cm Services</span> (B2B training).</p>
+                        </div>
+                        <div class="about-item">
+                            <p>TEFL certified with expertise in Cambridge, Oxford, and British Council methodologies.</p>
+                        </div>
+                        <div class="about-item">
+                            <p>Advanced Russian speaker with certification. Dedicated to helping educators grow.</p>
+                        </div>
+                    </div>
                     <a href="#contact" class="btn">Schedule Consultation</a>
                 </div>
             </div>
@@ -1391,46 +1432,6 @@
                             <p>Video Presentation Coming Soon</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Me -->
-    <section class="why-choose" id="why">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Me</h2>
-                <p>With nearly 7 years of teaching excellence and prestigious certifications</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>7 Years Experience</h3>
-                    <p>Proven results with thousands of satisfied students</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certified Expertise</h3>
-                    <p>CAE, British Council, and TEFL certified</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <h3>Reputable School</h3>
-                    <p>Owner of highly respected English school in Moscow</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Proven Results</h3>
-                    <p>Students achieve fluency in just 3 months</p>
                 </div>
             </div>
         </div>
@@ -1533,6 +1534,46 @@
                             <a href="#" class="course-btn buy-btn">Buy Course</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Me -->
+    <section class="why-choose" id="why">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Me</h2>
+                <p>With nearly 7 years of teaching excellence and prestigious certifications</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>7 Years Experience</h3>
+                    <p>Proven results with thousands of satisfied students</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certified Expertise</h3>
+                    <p>CAE, British Council, and TEFL certified</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Reputable School</h3>
+                    <p>Owner of highly respected English school in Moscow</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Proven Results</h3>
+                    <p>Students achieve fluency in just 3 months</p>
                 </div>
             </div>
         </div>
@@ -1682,7 +1723,7 @@
                     <label for="message">Message</label>
                     <textarea id="message" placeholder="Tell us about your goals"></textarea>
                 </div>
-                <button type="submit" class="btn">Submit Request</button>
+                <button type="submit" class="form-btn">Submit Request</button>
             </form>
         </div>
     </section>
