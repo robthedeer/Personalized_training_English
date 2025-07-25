@@ -76,6 +76,43 @@
             overflow: hidden;
         }
 
+        .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 90%;
+            opacity: 0;
+            animation: welcomeIn 1.5s forwards 0.5s;
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px rgba(107, 255, 180, 0.5);
+        }
+
+        @keyframes welcomeIn {
+            0% { opacity: 0; transform: translate(-50%, -40%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .welcome-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .welcome-sub {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -192,6 +229,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         .course-card:hover {
@@ -304,10 +342,21 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             transform: translateZ(20px);
+            transition: var(--transition);
+        }
+
+        .step.active .step-content {
+            transform: translateX(40px) translateZ(40px);
+            background: rgba(107, 255, 180, 0.15);
+            box-shadow: 0 0 30px rgba(107, 255, 180, 0.3);
         }
 
         .step:nth-child(even) .step-content {
             transform: translateZ(30px);
+        }
+
+        .step:nth-child(even).active .step-content {
+            transform: translateX(-40px) translateZ(40px);
         }
 
         .step-number {
@@ -325,6 +374,19 @@
             align-self: center;
             transform: translateZ(40px);
             box-shadow: 0 10px 25px rgba(74, 107, 255, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .step-number:hover {
+            transform: scale(1.1) translateZ(45px);
+            background: var(--secondary);
+        }
+
+        .step-number.active {
+            background: var(--accent);
+            color: var(--dark);
+            box-shadow: 0 0 20px rgba(107, 255, 180, 0.8);
         }
 
         .step-title {
@@ -406,6 +468,16 @@
             100% { box-shadow: 0 0 0 0 rgba(74, 107, 255, 0); }
         }
 
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(50px) rotateX(20deg);
@@ -417,13 +489,43 @@
             transform: translateY(0) rotateX(0);
         }
 
+        /* Mobile-specific animations */
+        @media (max-width: 768px) {
+            .course-card {
+                transform: translateX(-100%);
+                animation: slideInLeft 0.8s forwards;
+                animation-delay: calc(0.1s * var(--delay));
+            }
+            
+            .step {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 40px;
+            }
+            
+            .step:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .step-content {
+                width: 100%;
+                margin-left: 70px;
+            }
+            
+            .step-number {
+                margin: -40px 0 20px 0;
+                align-self: flex-start;
+            }
+            
+            .step.active .step-content {
+                transform: translateX(20px) translateZ(30px);
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-title { font-size: 3.5rem; }
             .roadmap-line { left: 30px; }
-            .step, .step:nth-child(even) { flex-direction: column; }
-            .step-content { width: 100%; margin-left: 70px; }
-            .step-number { margin: -40px 0 20px 0; align-self: flex-start; }
         }
 
         @media (max-width: 768px) {
@@ -431,12 +533,15 @@
             .hero-subtitle { font-size: 1.4rem; }
             .section-title { font-size: 2.2rem; }
             .why-choose { padding: 25px; }
+            .welcome-text { font-size: 2rem; }
         }
 
         @media (max-width: 576px) {
             .hero-title { font-size: 2.2rem; }
             .hero-image { width: 180px; height: 180px; }
             .btn { display: block; margin: 15px auto; width: 80%; }
+            .welcome-text { font-size: 1.5rem; }
+            .welcome-sub { font-size: 1rem; }
         }
     </style>
 </head>
@@ -455,6 +560,10 @@
     </div>
     
     <header>
+        <div class="welcome-message">
+            <h2 class="welcome-text">Welcome to Excellence in English!</h2>
+            <p class="welcome-sub">Transform your language skills with Robert Nyamugada's premium coaching programs</p>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-image"></div>
@@ -472,56 +581,56 @@
         <div class="container">
             <h2 class="section-title animate-on-scroll">Exclusive Courses</h2>
             <div class="courses-grid">
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 0">
                     <i class="fas fa-user-graduate course-icon"></i>
                     <h3 class="course-title">Individual Tutor Training</h3>
                     <p class="course-desc">Personalized coaching for beginners to build strong foundational skills.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 1">
                     <i class="fas fa-chart-line course-icon"></i>
                     <h3 class="course-title">Boost Your Income as a Tutor</h3>
                     <p class="course-desc">Strategies to elevate your teaching business and increase earnings.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 2">
                     <i class="fas fa-building course-icon"></i>
                     <h3 class="course-title">English for Corporates</h3>
                     <p class="course-desc">Group training programs tailored for company staff and professionals.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 3">
                     <i class="fas fa-book course-icon"></i>
                     <h3 class="course-title">Teaching Material & Preparation</h3>
                     <p class="course-desc">Master the art of lesson planning and resource development.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 4">
                     <i class="fas fa-smile course-icon"></i>
                     <h3 class="course-title">Client Satisfaction Course</h3>
                     <p class="course-desc">Learn techniques to exceed student expectations and build loyalty.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 5">
                     <i class="fas fa-chalkboard-teacher course-icon"></i>
                     <h3 class="course-title">What to Teach Your Students</h3>
                     <p class="course-desc">Curriculum development strategies for effective learning outcomes.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 6">
                     <i class="fas fa-file-alt course-icon"></i>
                     <h3 class="course-title">Coaching for Exams (IELTS)</h3>
                     <p class="course-desc">Specialized preparation for high-stakes English proficiency exams.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
                 
-                <div class="course-card animate-on-scroll">
+                <div class="course-card" style="--delay: 7">
                     <i class="fas fa-medal course-icon"></i>
                     <h3 class="course-title">Olympiad Preparations</h3>
                     <p class="course-desc">Advanced training for Programming and Mathematics competitions.</p>
@@ -575,7 +684,7 @@
                 <div class="roadmap-line"></div>
                 <div class="roadmap-steps">
                     <div class="step animate-on-scroll">
-                        <div class="step-number">1</div>
+                        <div class="step-number" data-step="1">1</div>
                         <div class="step-content">
                             <h3 class="step-title">Master the Fundamentals</h3>
                             <p>Build a strong foundation in grammar, pronunciation, and vocabulary through structured learning.</p>
@@ -583,7 +692,7 @@
                     </div>
                     
                     <div class="step animate-on-scroll">
-                        <div class="step-number">2</div>
+                        <div class="step-number" data-step="2">2</div>
                         <div class="step-content">
                             <h3 class="step-title">Develop Teaching Skills</h3>
                             <p>Learn effective lesson planning, student engagement techniques, and classroom management.</p>
@@ -591,7 +700,7 @@
                     </div>
                     
                     <div class="step animate-on-scroll">
-                        <div class="step-number">3</div>
+                        <div class="step-number" data-step="3">3</div>
                         <div class="step-content">
                             <h3 class="step-title">Specialize Your Expertise</h3>
                             <p>Focus on specific areas like business English, exam preparation, or industry-specific terminology.</p>
@@ -599,7 +708,7 @@
                     </div>
                     
                     <div class="step animate-on-scroll">
-                        <div class="step-number">4</div>
+                        <div class="step-number" data-step="4">4</div>
                         <div class="step-content">
                             <h3 class="step-title">Build Your Teaching Portfolio</h3>
                             <p>Create sample lessons, teaching materials, and gather testimonials from practice students.</p>
@@ -607,7 +716,7 @@
                     </div>
                     
                     <div class="step animate-on-scroll">
-                        <div class="step-number">5</div>
+                        <div class="step-number" data-step="5">5</div>
                         <div class="step-content">
                             <h3 class="step-title">Establish Your Teaching Business</h3>
                             <p>Set competitive pricing, develop marketing strategies, and build your student base.</p>
@@ -615,7 +724,7 @@
                     </div>
                     
                     <div class="step animate-on-scroll">
-                        <div class="step-number">6</div>
+                        <div class="step-number" data-step="6">6</div>
                         <div class="step-content">
                             <h3 class="step-title">Continuous Improvement</h3>
                             <p>Regularly update your skills, gather feedback, and refine your teaching approach.</p>
@@ -660,13 +769,12 @@
         langEn.addEventListener('click', () => {
             langEn.classList.add('active');
             langRu.classList.remove('active');
-            // In a real implementation, this would change all text content to English
+            speakWelcome();
         });
         
         langRu.addEventListener('click', () => {
             langRu.classList.add('active');
             langEn.classList.remove('active');
-            // In a real implementation, this would change all text content to Russian
         });
         
         // Background audio control
@@ -681,11 +789,45 @@
                 audioIcon.classList.remove('fa-pause');
                 audioIcon.classList.add('fa-play');
             } else {
-                audio.play();
+                audio.play().catch(e => console.log("Audio play failed:", e));
                 audioIcon.classList.remove('fa-play');
                 audioIcon.classList.add('fa-pause');
+                speakWelcome();
             }
             isPlaying = !isPlaying;
+        });
+        
+        // AI Voice Welcome Message
+        function speakWelcome() {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance();
+                utterance.text = "Welcome to Robert Nyamugada's Premier English Coaching. Discover exclusive courses that will transform your English skills and teaching career. With nearly 7 years of experience and certifications from CAE, British Council, and TEFL Institute, I provide top-quality training to help you achieve your language goals.";
+                utterance.rate = 1.0;
+                utterance.pitch = 1.2;
+                utterance.volume = 1;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        
+        // Play welcome message after page load
+        setTimeout(() => {
+            speakWelcome();
+        }, 1000);
+        
+        // Roadmap interaction
+        const stepNumbers = document.querySelectorAll('.step-number');
+        stepNumbers.forEach(number => {
+            number.addEventListener('click', () => {
+                // Remove active class from all steps
+                stepNumbers.forEach(n => {
+                    n.classList.remove('active');
+                    n.closest('.step').classList.remove('active');
+                });
+                
+                // Add active class to clicked step
+                number.classList.add('active');
+                number.closest('.step').classList.add('active');
+            });
         });
         
         // Scroll animations
