@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +35,89 @@
             line-height: 1.7;
             min-height: 100vh;
             background-attachment: fixed;
+            padding-left: 80px; /* Space for sidebar */
+            transition: padding-left 0.4s ease;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: left 0.4s ease;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            z-index: 1001;
+            background: var(--accent);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar-header {
+            padding: 30px 20px;
+            background: rgba(10, 36, 99, 0.5);
+            text-align: center;
+            border-bottom: 1px solid rgba(246, 174, 45, 0.3);
+        }
+
+        .sidebar-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .sidebar-nav {
+            padding: 30px 0;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 15px 30px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(10, 36, 99, 0.3);
+            color: var(--accent);
+            border-left: 4px solid var(--accent);
+        }
+
+        .sidebar-nav i {
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
         }
 
         .language-toggle {
@@ -129,15 +213,13 @@
             position: relative;
         }
 
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            height: 15px;
-            background: rgba(246, 174, 45, 0.3);
-            z-index: -1;
+        .hero h1 span.name {
+            display: inline-block;
+            background: rgba(246, 174, 45, 0.2);
+            padding: 0 15px;
+            border-radius: 10px;
+            transform: rotate(-2deg);
+            animation: highlightName 2s infinite alternate;
         }
 
         .hero p {
@@ -193,6 +275,13 @@
             left: 100%;
         }
 
+        .consult-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            margin-left: 15px;
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 80px;
@@ -225,6 +314,93 @@
             margin: 20px auto 0;
             font-size: 1.2rem;
             color: rgba(255,255,255,0.8);
+        }
+
+        .about {
+            position: relative;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: rotate(-3deg);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .highlight {
+            background: rgba(246, 174, 45, 0.2);
+            padding: 0 5px;
+            border-radius: 5px;
+        }
+
+        .video-section {
+            margin-top: 70px;
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: rgba(10, 36, 99, 0.3);
+            padding: 30px;
+            position: relative;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .video-placeholder i {
+            font-size: 5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
 
         .why-choose {
@@ -371,6 +547,29 @@
             margin-bottom: 25px;
             color: rgba(255,255,255,0.8);
             min-height: 90px;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .meta-btn {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(10, 36, 99, 0.5);
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent);
+            border: 1px solid rgba(246, 174, 45, 0.3);
+            transition: var(--transition);
+        }
+
+        .meta-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
         }
 
         .roadmap {
@@ -600,6 +799,42 @@
             color: rgba(255,255,255,0.7);
         }
 
+        .contact-form {
+            background: rgba(10, 36, 99, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(246, 174, 45, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: none;
+        }
+
         .cta {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -691,6 +926,41 @@
             border-radius: 50%;
             background: var(--accent);
             cursor: pointer;
+        }
+
+        .contact-icons {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .phone {
+            background: var(--accent);
+        }
+
+        .contact-icon:hover {
+            transform: translateY(-5px) scale(1.1);
         }
 
         footer {
@@ -803,6 +1073,16 @@
             }
         }
 
+        @keyframes highlightName {
+            0% {
+                background: rgba(246, 174, 45, 0.2);
+            }
+            100% {
+                background: rgba(246, 174, 45, 0.4);
+                box-shadow: 0 0 20px rgba(246, 174, 45, 0.3);
+            }
+        }
+
         .floating {
             animation: float 6s ease-in-out infinite;
         }
@@ -820,9 +1100,27 @@
             .section-title h2 {
                 font-size: 2.8rem;
             }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-left: 0;
+            }
+            
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+            
             .hero h1 {
                 font-size: 2.8rem;
             }
@@ -862,6 +1160,10 @@
             .feature-card, .course-card {
                 padding: 30px 20px;
             }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -895,10 +1197,43 @@
             .volume-slider {
                 width: 70px;
             }
+            
+            .contact-icons {
+                bottom: 100px;
+                left: 15px;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Robert Nyamugada</h3>
+            <p>Premium English Coaching</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#hero"><i class="fas fa-home"></i> Home</a>
+            <a href="#about"><i class="fas fa-user"></i> About Me</a>
+            <a href="#why"><i class="fas fa-star"></i> Why Choose Me</a>
+            <a href="#courses"><i class="fas fa-graduation-cap"></i> Premium Programs</a>
+            <a href="#roadmap"><i class="fas fa-road"></i> Roadmap</a>
+            <a href="#testimonials"><i class="fas fa-comments"></i> Success Stories</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </div>
+
+    <!-- Menu Toggle -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
     <!-- Language Toggle -->
     <div class="language-toggle">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -906,77 +1241,62 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Transform Your <span>English Skills</span> with Excellence</h1>
-                <p>Join Robert Nyamugada's Exclusive Coaching Programs and Achieve Your Language Dreams</p>
-                <a href="#courses" class="btn">Discover Programs</a>
+                <h1>Transform Your English with <span class="name">Robert Nyamugada</span></h1>
+                <p>Premium Coaching for Individuals, Teachers and Corporates</p>
+                <div class="hero-btns">
+                    <a href="#courses" class="btn">Explore Programs</a>
+                    <a href="#contact" class="btn consult-btn">Free Consultation</a>
+                </div>
             </div>
         </div>
     </section>
 
-   
-    <!-- Courses -->
-    <section class="courses" id="courses">
+    <!-- About Me Section -->
+    <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>Premium Programs</h2>
-                <p>Exclusive training designed to maximize your English proficiency</p>
+                <h2>About Me</h2>
+                <p>Your dedicated English coach and educational entrepreneur</p>
             </div>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-                    <div class="course-content">
-                        <h3>Individual Tutor Training</h3>
-                        <p>Personalized guidance for beginners starting their English journey with custom learning paths</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Robert Nyamugada">
                 </div>
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-                    <div class="course-content">
-                        <h3>Business English</h3>
-                        <p>Corporate training to enhance professional communication skills and international relations</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
+                <div class="about-text">
+                    <h3>Robert Nyamugada</h3>
+                    <p>I am a passionate educator and entrepreneur with <span class="highlight">7 years of experience</span> in teaching English to both children and adults. As a native English speaker with advanced proficiency in Russian, I bridge cultural gaps to deliver effective language training.</p>
+                    
+                    <p>I founded and operate <span class="highlight">QESkids AI</span>, an innovative English and Programming school, and <span class="highlight">Cm Services</span>, a B2B company providing corporate training solutions. Since 2019, I've been empowering students through QESkids AI with transformative language education.</p>
+                    
+                    <p>My expertise includes diverse teaching methodologies from <span class="highlight">Cambridge, Oxford, and the British Council</span>. As a TEFL certified teacher with a certificate in Russian language, I've developed a reputation for excellence in educational outcomes.</p>
+                    
+                    <p>I'm dedicated to helping fellow educators enhance their teaching skills and grow their client base through specialized training programs.</p>
+                    
+                    <a href="#contact" class="btn">Schedule Consultation</a>
                 </div>
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-                    <div class="course-content">
-                        <h3>Exam Preparation</h3>
-                        <p>Specialized coaching for IELTS and other English proficiency exams with proven strategies</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
+            </div>
+            
+            <div class="video-section">
+                <div class="section-title">
+                    <h2>Teaching Philosophy</h2>
+                    <p>Watch my approach to transformative English education</p>
                 </div>
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');"></div>
-                    <div class="course-content">
-                        <h3>Teachers & Tutor Training</h3>
-                        <p>Comprehensive program for educators to enhance teaching methodologies and student engagement</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
-                    <div class="course-content">
-                        <h3>One-on-One Teacher Coaching</h3>
-                        <p>Personalized mentorship for educators to refine their skills and teaching approach</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-                    <div class="course-content">
-                        <h3>Teaching Material Creation</h3>
-                        <p>Learn to develop effective resources and preparation strategies for impactful lessons</p>
-                        <a href="#" class="btn">Details</a>
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Video Presentation Coming Soon</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-     <!-- Why Choose Me -->
+
+    <!-- Why Choose Me -->
     <section class="why-choose" id="why">
         <div class="container">
             <div class="section-title">
@@ -1011,6 +1331,90 @@
                     </div>
                     <h3>Proven Results</h3>
                     <p>Students achieve fluency and relocate to English-speaking countries in just 3 months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Programs</h2>
+                <p>Exclusive training designed to maximize your English proficiency</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Individual Tutor Training</h3>
+                        <p>Personalized guidance for beginners starting their English journey with custom learning paths</p>
+                        <div class="course-meta">
+                            <div class="meta-btn">₽2,500/hour</div>
+                            <div class="meta-btn">12 weeks</div>
+                        </div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Business English</h3>
+                        <p>Corporate training to enhance professional communication skills and international relations</p>
+                        <div class="course-meta">
+                            <div class="meta-btn">₽3,000/hour</div>
+                            <div class="meta-btn">8-16 weeks</div>
+                        </div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Exam Preparation</h3>
+                        <p>Specialized coaching for IELTS and other English proficiency exams with proven strategies</p>
+                        <div class="course-meta">
+                            <div class="meta-btn">₽2,800/hour</div>
+                            <div class="meta-btn">10 weeks</div>
+                        </div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Teachers & Tutor Training</h3>
+                        <p>Comprehensive program for educators to enhance teaching methodologies and student engagement</p>
+                        <div class="course-meta">
+                            <div class="meta-btn">₽3,200/hour</div>
+                            <div class="meta-btn">16 weeks</div>
+                        </div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
+                    <div class="course-content">
+                        <h3>One-on-One Teacher Coaching</h3>
+                        <p>Personalized mentorship for educators to refine their skills and teaching approach</p>
+                        <div class="course-meta">
+                            <div class="meta-btn">₽3,500/hour</div>
+                            <div class="meta-btn">Flexible</div>
+                        </div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1516321160907-7c7c6fdeecc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Consultation for Teachers</h3>
+                        <p>Expert guidance to help educators attract more clients and develop teaching skills</p>
+                        <div class="course-meta">
+                            <div class="meta-btn">₽2,500/hour</div>
+                            <div class="meta-btn">As needed</div>
+                        </div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1071,7 +1475,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials">
+    <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>Success Stories</h2>
@@ -1124,16 +1528,67 @@
         </div>
     </section>
 
+    <!-- Contact Form -->
+    <section class="contact-form" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Request Information</h2>
+                <p>Get in touch to start your English transformation journey</p>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="interest">Program Interest</label>
+                    <select id="interest">
+                        <option value="">Select a program</option>
+                        <option value="individual">Individual Tutor Training</option>
+                        <option value="business">Business English</option>
+                        <option value="exam">Exam Preparation</option>
+                        <option value="teacher">Teacher Training</option>
+                        <option value="consult">Consultation for Teachers</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Tell us about your goals"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta">
         <div class="container">
             <div class="cta-content">
                 <h2>Begin Your Transformation Today</h2>
                 <p>Join hundreds of successful students who have achieved their language goals with Robert's exclusive coaching programs</p>
-                <a href="#" class="btn">Enroll Now</a>
+                <a href="#contact" class="btn">Enroll Now</a>
             </div>
         </div>
     </section>
+
+    <!-- Floating Contact Icons -->
+    <div class="contact-icons">
+        <div class="contact-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="contact-icon phone">
+            <i class="fas fa-phone"></i>
+        </div>
+    </div>
 
     <!-- Audio Control -->
     <div class="audio-control">
@@ -1150,16 +1605,20 @@
                 <h3>Robert Nyamugada English Coaching</h3>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>robert@englishcoach.com</span>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Novokuznetskaya 4/12, Moscow</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>+7 (XXX) XXX-XXXX</span>
+                        <span>+7 (910) 448-3756</span>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Moscow, Russia</span>
+                        <i class="fas fa-envelope"></i>
+                        <span>qes_school@mail.ru</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <span>@rob_the_deer</span>
                     </div>
                 </div>
                 <div class="social-icons">
@@ -1176,6 +1635,21 @@
     </footer>
 
     <script>
+        // Sidebar toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+
         // Background audio
         const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-inspiring-achievement-481.mp3');
         audio.loop = true;
@@ -1235,14 +1709,14 @@
                 const lang = button.dataset.lang;
                 if(lang === 'ru') {
                     document.querySelector('title').textContent = "Премиум обучение английскому | Роберт Ньямугада";
-                    document.querySelector('.hero h1').innerHTML = 'Преобразите свои <span>знания английского</span> с профессионалом';
-                    document.querySelector('.hero p').textContent = "Присоединяйтесь к эксклюзивным программам Роберта Ньямугады и осуществите свою языковую мечту";
-                    document.querySelector('.btn').textContent = "Открыть программы";
+                    document.querySelector('.hero h1').innerHTML = 'Преобразите свои <span class="name">знания английского</span> с Робертом Ньямугадой';
+                    document.querySelector('.hero p').textContent = "Премиум коучинг для частных лиц, преподавателей и компаний";
+                    document.querySelector('.btn').textContent = "Изучить программы";
                 } else {
                     document.querySelector('title').textContent = "Premium English Coaching | Robert Nyamugada";
-                    document.querySelector('.hero h1').innerHTML = 'Transform Your <span>English Skills</span> with Excellence';
-                    document.querySelector('.hero p').textContent = "Join Robert Nyamugada's Exclusive Coaching Programs and Achieve Your Language Dreams";
-                    document.querySelector('.btn').textContent = "Discover Programs";
+                    document.querySelector('.hero h1').innerHTML = 'Transform Your English with <span class="name">Robert Nyamugada</span>';
+                    document.querySelector('.hero p').textContent = "Premium Coaching for Individuals, Teachers and Corporates";
+                    document.querySelector('.btn').textContent = "Explore Programs";
                 }
             });
         });
@@ -1257,6 +1731,16 @@
         document.querySelectorAll('.timeline-item').forEach((item, index) => {
             item.style.animationDelay = `${index * 0.2}s`;
         });
+
+        // Contact icon actions
+        document.querySelector('.whatsapp').addEventListener('click', () => {
+            alert('WhatsApp: +7 (910) 448-3756');
+        });
+
+        document.querySelector('.phone').addEventListener('click', () => {
+            alert('Call Robert: +7 (910) 448-3756');
+        });
     </script>
 </body>
 </html>
+
