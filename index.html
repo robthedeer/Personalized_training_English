@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robert Nyamugada - Premier English Coaching</title>
+    <title>Premium English Coaching | Robert Nyamugada</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a6bff;
-            --secondary: #ff6b6b;
-            --accent: #6bffb4;
-            --dark: #1a1a2e;
+            --primary: #0a2463;
+            --secondary: #61a0af;
+            --accent: #f6ae2d;
             --light: #f8f9fa;
-            --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --dark: #212529;
+            --success: #4CAF50;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         * {
@@ -23,44 +26,41 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
             overflow-x: hidden;
-            perspective: 1000px;
-            min-height: 100vh;
             line-height: 1.6;
         }
 
-        .lang-toggle {
+        .language-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.9);
             border-radius: 30px;
-            padding: 5px;
+            padding: 8px 15px;
+            box-shadow: var(--shadow);
             display: flex;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transform: translateZ(20px);
-            animation: pulse 2s infinite;
+            gap: 10px;
+            backdrop-filter: blur(5px);
         }
 
         .lang-btn {
-            background: transparent;
+            background: none;
             border: none;
-            color: white;
-            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 15px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: 600;
             transition: var(--transition);
         }
 
         .lang-btn.active {
             background: var(--primary);
+            color: white;
         }
 
         .container {
@@ -69,144 +69,152 @@
             padding: 0 20px;
         }
 
-        header {
-            padding: 100px 0 60px;
-            text-align: center;
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(10,36,99,0.9) 0%, rgba(97,160,175,0.8) 100%), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            color: white;
             position: relative;
             overflow: hidden;
-        }
-
-        .welcome-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 90%;
-            opacity: 0;
-            animation: welcomeIn 1.5s forwards 0.5s;
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 30px rgba(107, 255, 180, 0.5);
-        }
-
-        @keyframes welcomeIn {
-            0% { opacity: 0; transform: translate(-50%, -40%); }
-            100% { opacity: 1; transform: translate(-50%, -50%); }
-        }
-
-        .welcome-text {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--accent);
-            text-align: center;
-        }
-
-        .welcome-sub {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            transform-style: preserve-3d;
-            animation: float 6s ease-in-out infinite;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .hero-title {
+        h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 800;
+            font-size: 4rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: translateZ(50px);
-            background: linear-gradient(45deg, #ff6b6b, #4a6bff, #6bffb4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradient-shift 8s infinite alternate;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.3s;
         }
 
-        .hero-subtitle {
-            font-size: 1.8rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            transform: translateZ(40px);
-        }
-
-        .hero-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            margin: 30px auto;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            transform: translateZ(60px);
-            position: relative;
-            background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80') center/cover;
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.6s;
         }
 
         .btn {
             display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 14px 35px;
-            border-radius: 50px;
-            text-decoration: none;
+            padding: 15px 35px;
+            background: var(--accent);
+            color: var(--primary);
             font-weight: 600;
-            margin: 20px 10px;
+            text-decoration: none;
+            border-radius: 50px;
             transition: var(--transition);
-            transform: translateZ(30px);
-            box-shadow: 0 10px 25px rgba(74, 107, 255, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.9s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-5px) scale(1.05) translateZ(30px);
-            box-shadow: 0 15px 35px rgba(74, 107, 255, 0.6);
-            background: #5a7bff;
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-        }
-
-        .btn-secondary:hover {
-            background: #ff7b7b;
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: #ffc107;
         }
 
         .section-title {
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
             position: relative;
-            transform: translateZ(40px);
         }
 
-        .section-title:after {
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
             height: 4px;
             background: var(--accent);
-            margin: 15px auto;
             border-radius: 2px;
+        }
+
+        .why-choose {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .feature-card.animate {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 30px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .courses {
+            background: linear-gradient(to bottom, #f0f8ff, #e6f7ff);
         }
 
         .courses-grid {
@@ -216,656 +224,612 @@
         }
 
         .course-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transform-style: preserve-3d;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .course-card.animate {
+            animation: fadeUp 0.8s forwards;
         }
 
         .course-card:hover {
-            transform: translateY(-15px) rotateY(10deg) scale(1.03);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .course-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
+        .course-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .course-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-
-        .course-desc {
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .why-choose {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 30px;
-            padding: 40px;
-            margin: 60px 0;
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateY(5deg);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .why-choose:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .benefit {
-            text-align: center;
+        .course-content {
             padding: 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            transition: var(--transition);
-            transform: translateZ(20px);
         }
 
-        .benefit:hover {
-            transform: translateY(-10px) translateZ(30px);
-            background: rgba(255, 255, 255, 0.1);
+        .course-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary);
         }
 
-        .benefit i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 15px;
+        .course-content p {
+            margin-bottom: 20px;
+            color: #666;
         }
 
-        .roadmap-container {
+        .roadmap {
+            background: white;
+        }
+
+        .timeline {
             position: relative;
-            padding: 50px 0;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .roadmap-line {
+        .timeline::after {
+            content: '';
             position: absolute;
+            width: 6px;
+            background: var(--secondary);
             top: 0;
             bottom: 0;
             left: 50%;
-            width: 4px;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .timeline-item.animate {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
             background: var(--accent);
-            transform: translateX(-50%);
+            border: 4px solid var(--primary);
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
             z-index: 1;
         }
 
-        .roadmap-steps {
-            position: relative;
-            z-index: 2;
-        }
-
-        .step {
-            display: flex;
-            margin-bottom: 60px;
-            transform-style: preserve-3d;
-            transition: var(--transition);
-        }
-
-        .step:hover {
-            transform: translateX(10px);
-        }
-
-        .step:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .step-content {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 25px;
-            width: 45%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            transform: translateZ(20px);
-            transition: var(--transition);
-        }
-
-        .step.active .step-content {
-            transform: translateX(40px) translateZ(40px);
-            background: rgba(107, 255, 180, 0.15);
-            box-shadow: 0 0 30px rgba(107, 255, 180, 0.3);
-        }
-
-        .step:nth-child(even) .step-content {
-            transform: translateZ(30px);
-        }
-
-        .step:nth-child(even).active .step-content {
-            transform: translateX(-40px) translateZ(40px);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
+        .timeline-item:nth-child(even)::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            background: var(--accent);
+            border: 4px solid var(--primary);
+            top: 50%;
+            transform: translateY(-50%);
             border-radius: 50%;
+            z-index: 1;
+        }
+
+        .testimonials {
+            background: linear-gradient(to bottom, #e6f7ff, #d1f0ff);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .testimonial-card.animate {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(10, 36, 99, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-top: 30px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 20px;
-            flex-shrink: 0;
-            align-self: center;
-            transform: translateZ(40px);
-            box-shadow: 0 10px 25px rgba(74, 107, 255, 0.4);
-            cursor: pointer;
-            transition: var(--transition);
+            margin-top: 20px;
         }
 
-        .step-number:hover {
-            transform: scale(1.1) translateZ(45px);
-            background: var(--secondary);
-        }
-
-        .step-number.active {
-            background: var(--accent);
-            color: var(--dark);
-            box-shadow: 0 0 20px rgba(107, 255, 180, 0.8);
-        }
-
-        .step-title {
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 80px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .social-links a {
+        .author-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--secondary);
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
+            font-weight: bold;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
+        .author-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
         }
 
         .audio-control {
             position: fixed;
             bottom: 20px;
-            left: 20px;
+            right: 20px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
+            background: white;
             width: 50px;
             height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow);
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .audio-control:hover {
+            transform: scale(1.1);
         }
 
         .audio-control i {
-            font-size: 1.2rem;
+            font-size: 20px;
+            color: var(--primary);
         }
 
-        /* 3D Animations */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes float {
-            0% { transform: translateY(0px) rotateX(5deg); }
-            50% { transform: translateY(-20px) rotateX(5deg); }
-            100% { transform: translateY(0px) rotateX(5deg); }
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(74, 107, 255, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(74, 107, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(74, 107, 255, 0); }
-        }
-
-        @keyframes slideInLeft {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideInRight {
-            0% { transform: translateX(100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px) rotateX(20deg);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0) rotateX(0);
-        }
-
-        /* Mobile-specific animations */
-        @media (max-width: 768px) {
-            .course-card {
-                transform: translateX(-100%);
-                animation: slideInLeft 0.8s forwards;
-                animation-delay: calc(0.1s * var(--delay));
+            0%, 100% {
+                transform: translateY(0);
             }
-            
-            .step {
-                flex-direction: column;
-                align-items: flex-start;
-                margin-bottom: 40px;
+            50% {
+                transform: translateY(-10px);
             }
-            
-            .step:nth-child(even) {
-                flex-direction: column;
-            }
-            
-            .step-content {
-                width: 100%;
-                margin-left: 70px;
-            }
-            
-            .step-number {
-                margin: -40px 0 20px 0;
-                align-self: flex-start;
-            }
-            
-            .step.active .step-content {
-                transform: translateX(20px) translateZ(30px);
-            }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-title { font-size: 3.5rem; }
-            .roadmap-line { left: 30px; }
-        }
-
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.8rem; }
-            .hero-subtitle { font-size: 1.4rem; }
-            .section-title { font-size: 2.2rem; }
-            .why-choose { padding: 25px; }
-            .welcome-text { font-size: 2rem; }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title { font-size: 2.2rem; }
-            .hero-image { width: 180px; height: 180px; }
-            .btn { display: block; margin: 15px auto; width: 80%; }
-            .welcome-text { font-size: 1.5rem; }
-            .welcome-sub { font-size: 1rem; }
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <audio id="background-audio" loop>
-        <source src="https://assets.mixkit.co/music/download/mixkit-urban-ambience-228.mp3" type="audio/mpeg">
-    </audio>
-    
-    <div class="lang-toggle">
-        <button class="lang-btn active" id="lang-en">EN</button>
-        <button class="lang-btn" id="lang-ru">RU</button>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
     </div>
-    
-    <div class="audio-control" id="audio-control">
-        <i class="fas fa-play"></i>
-    </div>
-    
-    <header>
-        <div class="welcome-message">
-            <h2 class="welcome-text">Welcome to Excellence in English!</h2>
-            <p class="welcome-sub">Transform your language skills with Robert Nyamugada's premium coaching programs</p>
-        </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-image"></div>
-                <h1 class="hero-title">Robert Nyamugada</h1>
-                <p class="hero-subtitle">Premier English Coaching for Individuals & Corporates</p>
-                <div class="hero-buttons">
-                    <a href="#courses" class="btn">Explore Courses</a>
-                    <a href="#contact" class="btn btn-secondary">Book Consultation</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    <section id="courses">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Exclusive Courses</h2>
-            <div class="courses-grid">
-                <div class="course-card" style="--delay: 0">
-                    <i class="fas fa-user-graduate course-icon"></i>
-                    <h3 class="course-title">Individual Tutor Training</h3>
-                    <p class="course-desc">Personalized coaching for beginners to build strong foundational skills.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 1">
-                    <i class="fas fa-chart-line course-icon"></i>
-                    <h3 class="course-title">Boost Your Income as a Tutor</h3>
-                    <p class="course-desc">Strategies to elevate your teaching business and increase earnings.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 2">
-                    <i class="fas fa-building course-icon"></i>
-                    <h3 class="course-title">English for Corporates</h3>
-                    <p class="course-desc">Group training programs tailored for company staff and professionals.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 3">
-                    <i class="fas fa-book course-icon"></i>
-                    <h3 class="course-title">Teaching Material & Preparation</h3>
-                    <p class="course-desc">Master the art of lesson planning and resource development.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 4">
-                    <i class="fas fa-smile course-icon"></i>
-                    <h3 class="course-title">Client Satisfaction Course</h3>
-                    <p class="course-desc">Learn techniques to exceed student expectations and build loyalty.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 5">
-                    <i class="fas fa-chalkboard-teacher course-icon"></i>
-                    <h3 class="course-title">What to Teach Your Students</h3>
-                    <p class="course-desc">Curriculum development strategies for effective learning outcomes.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 6">
-                    <i class="fas fa-file-alt course-icon"></i>
-                    <h3 class="course-title">Coaching for Exams (IELTS)</h3>
-                    <p class="course-desc">Specialized preparation for high-stakes English proficiency exams.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-                
-                <div class="course-card" style="--delay: 7">
-                    <i class="fas fa-medal course-icon"></i>
-                    <h3 class="course-title">Olympiad Preparations</h3>
-                    <p class="course-desc">Advanced training for Programming and Mathematics competitions.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
+                <h1>Premium English Coaching with Robert Nyamugada</h1>
+                <p>Transform Your English Skills with Exclusive, Personalized Training</p>
+                <a href="#courses" class="btn">Explore Courses</a>
             </div>
         </div>
     </section>
-    
-    <section id="why-choose">
+
+    <!-- Why Choose Me -->
+    <section class="why-choose" id="why">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Why Choose Me</h2>
-            <div class="why-choose animate-on-scroll">
-                <p>With nearly <strong>7 years</strong> of extensive experience in teaching English, I bring unparalleled expertise to every coaching session. As a certified professional with qualifications from <strong>CAE, British Council, and TEFL Institute</strong>, I've established a prestigious English school in Moscow known for excellence.</p>
-                
-                <p>My success stories include students who started from scratch and within just <strong>3 months</strong> achieved remarkable progress, enabling them to relocate to English-speaking countries. I combine innovative teaching methods with personalized attention to ensure transformative results.</p>
-                
-                <div class="benefits-grid">
-                    <div class="benefit">
+            <div class="section-title">
+                <h2>Why Choose Me</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>7 Years Experience</h3>
+                    <p>Nearly a decade of teaching excellence with proven results</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-certificate"></i>
-                        <h3>Internationally Certified</h3>
-                        <p>CAE, British Council & TEFL certified</p>
                     </div>
-                    
-                    <div class="benefit">
+                    <h3>Certified Expertise</h3>
+                    <p>CAE, British Council, and TEFL certified instructor</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-school"></i>
-                        <h3>Established School</h3>
-                        <p>Reputed English school in Moscow</p>
                     </div>
-                    
-                    <div class="benefit">
+                    <h3>Reputable School</h3>
+                    <p>Owner of a highly respected English school in Moscow</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-rocket"></i>
-                        <h3>Proven Results</h3>
-                        <p>Students relocate in 3 months</p>
                     </div>
-                    
-                    <div class="benefit">
-                        <i class="fas fa-users"></i>
-                        <h3>7 Years Experience</h3>
-                        <p>Teaching students of all levels</p>
+                    <h3>Proven Results</h3>
+                    <p>Students achieve fluency and relocate in just 3 months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Courses</h2>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Individual Tutor Training</h3>
+                        <p>Perfect for beginners starting their English journey with personalized guidance.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Business English</h3>
+                        <p>Corporate training to enhance professional communication skills.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Exam Preparation</h3>
+                        <p>Specialized coaching for IELTS and other English proficiency exams.</p>
+                        <a href="#" class="btn">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section id="roadmap">
+
+    <!-- Roadmap -->
+    <section class="roadmap" id="roadmap">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Roadmap to Becoming a Great Tutor</h2>
-            <div class="roadmap-container">
-                <div class="roadmap-line"></div>
-                <div class="roadmap-steps">
-                    <div class="step animate-on-scroll">
-                        <div class="step-number" data-step="1">1</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Master the Fundamentals</h3>
-                            <p>Build a strong foundation in grammar, pronunciation, and vocabulary through structured learning.</p>
+            <div class="section-title">
+                <h2>Roadmap to Becoming an Excellent Tutor</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Foundation Building</h3>
+                        <p>Master the fundamentals of English grammar and vocabulary.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Teaching Methodology</h3>
+                        <p>Learn effective teaching techniques and classroom management.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Specialized Training</h3>
+                        <p>Develop expertise in specific areas like business English or exam prep.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Practical Experience</h3>
+                        <p>Gain real-world teaching experience with guidance.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Advanced Certification</h3>
+                        <p>Earn recognized certifications to boost your credentials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Robert's personalized approach helped me achieve IELTS band 8 in just 3 months. His expertise is unmatched!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Anna Petrova</h4>
+                            <p>Relocated to Canada</p>
                         </div>
                     </div>
-                    
-                    <div class="step animate-on-scroll">
-                        <div class="step-number" data-step="2">2</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Develop Teaching Skills</h3>
-                            <p>Learn effective lesson planning, student engagement techniques, and classroom management.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The corporate training transformed our team's communication skills. We've seen a 40% improvement in international client satisfaction."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Mikhail Ivanov</h4>
+                            <p>Business Director</p>
                         </div>
                     </div>
-                    
-                    <div class="step animate-on-scroll">
-                        <div class="step-number" data-step="3">3</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Specialize Your Expertise</h3>
-                            <p>Focus on specific areas like business English, exam preparation, or industry-specific terminology.</p>
-                        </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "From complete beginner to confident speaker in 12 weeks. Robert's methods are truly effective!"
                     </div>
-                    
-                    <div class="step animate-on-scroll">
-                        <div class="step-number" data-step="4">4</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Build Your Teaching Portfolio</h3>
-                            <p>Create sample lessons, teaching materials, and gather testimonials from practice students.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step animate-on-scroll">
-                        <div class="step-number" data-step="5">5</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Establish Your Teaching Business</h3>
-                            <p>Set competitive pricing, develop marketing strategies, and build your student base.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step animate-on-scroll">
-                        <div class="step-number" data-step="6">6</div>
-                        <div class="step-content">
-                            <h3 class="step-title">Continuous Improvement</h3>
-                            <p>Regularly update your skills, gather feedback, and refine your teaching approach.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">E</div>
+                        <div class="author-info">
+                            <h4>Elena Sokolova</h4>
+                            <p>Marketing Professional</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section id="contact">
+
+    <!-- CTA -->
+    <section class="cta">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Start Your English Journey Today</h2>
-            <div class="contact-content animate-on-scroll" style="text-align: center; max-width: 700px; margin: 0 auto;">
-                <p>Ready to transform your English skills or teaching career? Contact me for a personalized consultation to discuss your goals and how my exclusive coaching programs can help you achieve them.</p>
-                <a href="#" class="btn" style="margin-top: 30px;">Schedule a Consultation</a>
-            </div>
+            <h2>Ready to Transform Your English Skills?</h2>
+            <p>Join hundreds of successful students who have achieved their language goals with Robert's exclusive coaching programs.</p>
+            <a href="#" class="btn">Enroll Today</a>
         </div>
     </section>
-    
+
+    <!-- Audio Control -->
+    <div class="audio-control">
+        <i class="fas fa-volume-up"></i>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <h3>Robert Nyamugada English Coaching</h3>
-            <p>Premier English Training for Individuals and Corporates</p>
-            
-            <div class="social-links">
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+            <div class="footer-content">
+                <h3>Robert Nyamugada English Coaching</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> robert@englishcoach.com</p>
+                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XXXX</p>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
             </div>
-            
-            <p>© 2023 All Rights Reserved</p>
+            <div class="copyright">
+                <p>&copy; 2023 Robert Nyamugada English Coaching. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Language toggle functionality
-        const langEn = document.getElementById('lang-en');
-        const langRu = document.getElementById('lang-ru');
-        
-        langEn.addEventListener('click', () => {
-            langEn.classList.add('active');
-            langRu.classList.remove('active');
-            speakWelcome();
-        });
-        
-        langRu.addEventListener('click', () => {
-            langRu.classList.add('active');
-            langEn.classList.remove('active');
-        });
-        
-        // Background audio control
-        const audio = document.getElementById('background-audio');
-        const audioControl = document.getElementById('audio-control');
-        const audioIcon = audioControl.querySelector('i');
-        let isPlaying = false;
-        
+        // Background audio
+        const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-inspiring-achievement-481.mp3');
+        audio.loop = true;
+        const audioControl = document.querySelector('.audio-control');
+        let audioPlaying = false;
+
         audioControl.addEventListener('click', () => {
-            if (isPlaying) {
+            if (audioPlaying) {
                 audio.pause();
-                audioIcon.classList.remove('fa-pause');
-                audioIcon.classList.add('fa-play');
+                audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
             } else {
                 audio.play().catch(e => console.log("Audio play failed:", e));
-                audioIcon.classList.remove('fa-play');
-                audioIcon.classList.add('fa-pause');
-                speakWelcome();
+                audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
             }
-            isPlaying = !isPlaying;
+            audioPlaying = !audioPlaying;
         });
-        
-        // AI Voice Welcome Message
-        function speakWelcome() {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance();
-                utterance.text = "Welcome to Robert Nyamugada's Premier English Coaching. Discover exclusive courses that will transform your English skills and teaching career. With nearly 7 years of experience and certifications from CAE, British Council, and TEFL Institute, I provide top-quality training to help you achieve your language goals.";
-                utterance.rate = 1.0;
-                utterance.pitch = 1.2;
-                utterance.volume = 1;
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-        
-        // Play welcome message after page load
-        setTimeout(() => {
-            speakWelcome();
-        }, 1000);
-        
-        // Roadmap interaction
-        const stepNumbers = document.querySelectorAll('.step-number');
-        stepNumbers.forEach(number => {
-            number.addEventListener('click', () => {
-                // Remove active class from all steps
-                stepNumbers.forEach(n => {
-                    n.classList.remove('active');
-                    n.closest('.step').classList.remove('active');
-                });
-                
-                // Add active class to clicked step
-                number.classList.add('active');
-                number.closest('.step').classList.add('active');
-            });
-        });
-        
+
         // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .course-card, .timeline-item, .testimonial-card');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('animate');
                 }
             });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // 3D hover effects
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.course-card, .benefit, .why-choose');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Language toggle
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
                 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const angleY = (x - centerX) / 25;
-                const angleX = (centerY - y) / 25;
-                
-                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+                // In a real implementation, this would change all text content
+                alert(`Language changed to ${button.dataset.lang.toUpperCase()}. In a complete implementation, all text would be translated.`);
             });
         });
-        
-        // Reset 3D effect when mouse leaves
-        document.querySelectorAll('.course-card, .benefit, .why-choose').forEach(card => {
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-            });
+
+        // Floating animation for elements
+        const floatingElements = document.querySelectorAll('.feature-icon, .btn');
+        floatingElements.forEach(el => {
+            el.classList.add('floating');
         });
     </script>
 </body>
