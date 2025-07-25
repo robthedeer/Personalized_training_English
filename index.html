@@ -199,6 +199,10 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
         }
 
         .hero h1 {
@@ -208,9 +212,6 @@
             margin-bottom: 20px;
             line-height: 1.2;
             text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.3s;
         }
 
         .hero h1 span {
@@ -229,9 +230,6 @@
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.6s;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -242,7 +240,8 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 30px;
+            margin-top: auto;
+            padding-bottom: 100px;
         }
 
         .btn {
@@ -255,9 +254,6 @@
             border-radius: 50px;
             transition: var(--transition);
             box-shadow: 0 5px 20px rgba(246, 174, 45, 0.4);
-            /* Remove animation for buttons */
-            opacity: 1;
-            transform: translateY(0);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: 1rem;
@@ -913,9 +909,6 @@
             border-radius: 50px;
             transition: var(--transition);
             box-shadow: 0 5px 20px rgba(246, 174, 45, 0.4);
-            /* Remove animation for form button */
-            opacity: 1;
-            transform: translateY(0);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: 1rem;
@@ -1205,21 +1198,9 @@
                 padding-left: 0;
             }
             
-            /* Mobile menu height reduction (60% height from bottom) */
             .sidebar {
-                top: auto;
-                bottom: -60vh; /* 60% of viewport height */
-                left: 0;
-                width: 100%;
-                height: 60vh; /* Reduced by 40% from bottom */
-                border-radius: 20px 20px 0 0;
-                transform: translateY(100%);
-                transition: transform 0.4s ease;
-            }
-            
-            .sidebar.active {
-                transform: translateY(0);
-                left: 0;
+                width: 280px;
+                left: -280px;
             }
             
             .hero {
@@ -1296,6 +1277,12 @@
             .about-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Position hero buttons near bottom */
+            .hero-btns {
+                margin-top: auto;
+                padding-bottom: 100px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1354,13 +1341,13 @@
     <!-- Sidebar Menu -->
     <div class="sidebar">
         <nav class="sidebar-nav">
-            <a href="#hero"><i class="fas fa-home"></i> Home</a>
-            <a href="#about"><i class="fas fa-user"></i> About Me</a>
-            <a href="#courses"><i class="fas fa-graduation-cap"></i> Premium Programs</a>
-            <a href="#why"><i class="fas fa-star"></i> Why Choose Me</a>
-            <a href="#roadmap"><i class="fas fa-road"></i> Roadmap</a>
-            <a href="#testimonials"><i class="fas fa-comments"></i> Success Stories</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#hero" data-translate="home"><i class="fas fa-home"></i> <span class="translatable">Home</span></a>
+            <a href="#about" data-translate="about"><i class="fas fa-user"></i> <span class="translatable">About Me</span></a>
+            <a href="#courses" data-translate="premium"><i class="fas fa-graduation-cap"></i> <span class="translatable">Premium Programs</span></a>
+            <a href="#why" data-translate="why"><i class="fas fa-star"></i> <span class="translatable">Why Choose Me</span></a>
+            <a href="#roadmap" data-translate="roadmap"><i class="fas fa-road"></i> <span class="translatable">Roadmap</span></a>
+            <a href="#testimonials" data-translate="stories"><i class="fas fa-comments"></i> <span class="translatable">Success Stories</span></a>
+            <a href="#contact" data-translate="contact"><i class="fas fa-envelope"></i> <span class="translatable">Contact</span></a>
         </nav>
     </div>
 
@@ -1379,11 +1366,11 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Transform Your English with <span class="name">Robert Nyamugada</span></h1>
-                <p>Premium Coaching for Individuals, Teachers and Corporates</p>
+                <h1 data-translate="hero_title">Transform Your English with <span class="name">Robert Nyamugada</span></h1>
+                <p data-translate="hero_subtitle">Premium Coaching for Individuals, Teachers and Corporates</p>
                 <div class="hero-btns">
-                    <a href="#contact" class="btn consult-btn">Free Consultation</a>
-                    <a href="#courses" class="btn signup-btn">Sign Up Now</a>
+                    <a href="#contact" class="btn consult-btn" data-translate="consult_btn">Free Consultation</a>
+                    <a href="#courses" class="btn signup-btn" data-translate="signup_btn">Sign Up Now</a>
                 </div>
             </div>
         </div>
@@ -1393,8 +1380,8 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Me</h2>
-                <p>Your dedicated English coach and educational entrepreneur</p>
+                <h2 data-translate="about_title">About Me</h2>
+                <p data-translate="about_subtitle">Your dedicated English coach and educational entrepreneur</p>
             </div>
             <div class="about-content">
                 <div class="about-image">
@@ -1404,32 +1391,32 @@
                     <h3>Robert Nyamugada</h3>
                     <div class="about-grid">
                         <div class="about-item">
-                            <p>Passionate educator and entrepreneur with <span class="highlight">7 years of experience</span> teaching English to children and adults.</p>
+                            <p data-translate="about_text1">Passionate educator and entrepreneur with <span class="highlight">7 years of experience</span> teaching English to children and adults.</p>
                         </div>
                         <div class="about-item">
-                            <p>Founder of <span class="highlight">QESkids AI</span> (English/Programming school) and <span class="highlight">Cm Services</span> (B2B training).</p>
+                            <p data-translate="about_text2">Founder of <span class="highlight">QESkids AI</span> (English/Programming school) and <span class="highlight">Cm Services</span> (B2B training).</p>
                         </div>
                         <div class="about-item">
-                            <p>TEFL certified with expertise in Cambridge, Oxford, and British Council methodologies.</p>
+                            <p data-translate="about_text3">TEFL certified with expertise in Cambridge, Oxford, and British Council methodologies.</p>
                         </div>
                         <div class="about-item">
-                            <p>Advanced Russian speaker with certification. Dedicated to helping educators grow.</p>
+                            <p data-translate="about_text4">Advanced Russian speaker with certification. Dedicated to helping educators grow.</p>
                         </div>
                     </div>
-                    <a href="#contact" class="btn">Schedule Consultation</a>
+                    <a href="#contact" class="btn" data-translate="schedule_btn">Schedule Consultation</a>
                 </div>
             </div>
             
             <div class="video-section">
                 <div class="section-title">
-                    <h2>Teaching Philosophy</h2>
-                    <p>Watch my approach to transformative English education</p>
+                    <h2 data-translate="philosophy_title">Teaching Philosophy</h2>
+                    <p data-translate="philosophy_subtitle">Watch my approach to transformative English education</p>
                 </div>
                 <div class="video-container">
                     <div class="video-placeholder">
                         <div>
                             <i class="fas fa-play-circle"></i>
-                            <p>Video Presentation Coming Soon</p>
+                            <p data-translate="video_text">Video Presentation Coming Soon</p>
                         </div>
                     </div>
                 </div>
@@ -1441,97 +1428,97 @@
     <section class="courses" id="courses">
         <div class="container">
             <div class="section-title">
-                <h2>Premium Programs</h2>
-                <p>Exclusive training designed to maximize your English proficiency</p>
+                <h2 data-translate="premium_title">Premium Programs</h2>
+                <p data-translate="premium_subtitle">Exclusive training designed to maximize your English proficiency</p>
             </div>
             <div class="courses-grid">
                 <div class="course-card">
                     <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
                     <div class="course-content">
-                        <h3>Individual Tutor Training</h3>
-                        <p>Personalized guidance for beginners with custom learning paths</p>
+                        <h3 data-translate="course1_title">Individual Tutor Training</h3>
+                        <p data-translate="course1_desc">Personalized guidance for beginners with custom learning paths</p>
                         <div class="course-meta">
                             <div class="meta-btn">₽2,500/hour</div>
-                            <div class="meta-btn">12 weeks</div>
+                            <div class="meta-btn" data-translate="course1_duration">12 weeks</div>
                         </div>
                         <div class="course-actions">
-                            <a href="#" class="course-btn details-btn">Details</a>
-                            <a href="#" class="course-btn buy-btn">Buy Course</a>
+                            <a href="#" class="course-btn details-btn" data-translate="details_btn">Details</a>
+                            <a href="#" class="course-btn buy-btn" data-translate="buy_btn">Buy Course</a>
                         </div>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
                     <div class="course-content">
-                        <h3>Business English</h3>
-                        <p>Corporate training for professional communication and relations</p>
+                        <h3 data-translate="course2_title">Business English</h3>
+                        <p data-translate="course2_desc">Corporate training for professional communication and relations</p>
                         <div class="course-meta">
                             <div class="meta-btn">₽3,000/hour</div>
-                            <div class="meta-btn">8-16 weeks</div>
+                            <div class="meta-btn" data-translate="course2_duration">8-16 weeks</div>
                         </div>
                         <div class="course-actions">
-                            <a href="#" class="course-btn details-btn">Details</a>
-                            <a href="#" class="course-btn buy-btn">Buy Course</a>
+                            <a href="#" class="course-btn details-btn" data-translate="details_btn">Details</a>
+                            <a href="#" class="course-btn buy-btn" data-translate="buy_btn">Buy Course</a>
                         </div>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
                     <div class="course-content">
-                        <h3>Exam Preparation</h3>
-                        <p>Specialized coaching for IELTS with proven strategies</p>
+                        <h3 data-translate="course3_title">Exam Preparation</h3>
+                        <p data-translate="course3_desc">Specialized coaching for IELTS with proven strategies</p>
                         <div class="course-meta">
                             <div class="meta-btn">₽2,800/hour</div>
-                            <div class="meta-btn">10 weeks</div>
+                            <div class="meta-btn" data-translate="course3_duration">10 weeks</div>
                         </div>
                         <div class="course-actions">
-                            <a href="#" class="course-btn details-btn">Details</a>
-                            <a href="#" class="course-btn buy-btn">Buy Course</a>
+                            <a href="#" class="course-btn details-btn" data-translate="details_btn">Details</a>
+                            <a href="#" class="course-btn buy-btn" data-translate="buy_btn">Buy Course</a>
                         </div>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');"></div>
                     <div class="course-content">
-                        <h3>Teachers & Tutor Training</h3>
-                        <p>Program to enhance teaching methodologies and engagement</p>
+                        <h3 data-translate="course4_title">Teachers & Tutor Training</h3>
+                        <p data-translate="course4_desc">Program to enhance teaching methodologies and engagement</p>
                         <div class="course-meta">
                             <div class="meta-btn">₽3,200/hour</div>
-                            <div class="meta-btn">16 weeks</div>
+                            <div class="meta-btn" data-translate="course4_duration">16 weeks</div>
                         </div>
                         <div class="course-actions">
-                            <a href="#" class="course-btn details-btn">Details</a>
-                            <a href="#" class="course-btn buy-btn">Buy Course</a>
+                            <a href="#" class="course-btn details-btn" data-translate="details_btn">Details</a>
+                            <a href="#" class="course-btn buy-btn" data-translate="buy_btn">Buy Course</a>
                         </div>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
                     <div class="course-content">
-                        <h3>One-on-One Teacher Coaching</h3>
-                        <p>Personalized mentorship for educators to refine their skills</p>
+                        <h3 data-translate="course5_title">One-on-One Teacher Coaching</h3>
+                        <p data-translate="course5_desc">Personalized mentorship for educators to refine their skills</p>
                         <div class="course-meta">
                             <div class="meta-btn">₽3,500/hour</div>
-                            <div class="meta-btn">Flexible</div>
+                            <div class="meta-btn" data-translate="course5_duration">Flexible</div>
                         </div>
                         <div class="course-actions">
-                            <a href="#" class="course-btn details-btn">Details</a>
-                            <a href="#" class="course-btn buy-btn">Buy Course</a>
+                            <a href="#" class="course-btn details-btn" data-translate="details_btn">Details</a>
+                            <a href="#" class="course-btn buy-btn" data-translate="buy_btn">Buy Course</a>
                         </div>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1516321160907-7c7c6fdeecc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');"></div>
                     <div class="course-content">
-                        <h3>Consultation for Teachers</h3>
-                        <p>Expert guidance to help educators attract more clients</p>
+                        <h3 data-translate="course6_title">Consultation for Teachers</h3>
+                        <p data-translate="course6_desc">Expert guidance to help educators attract more clients</p>
                         <div class="course-meta">
                             <div class="meta-btn">₽2,500/hour</div>
-                            <div class="meta-btn">As needed</div>
+                            <div class="meta-btn" data-translate="course6_duration">As needed</div>
                         </div>
                         <div class="course-actions">
-                            <a href="#" class="course-btn details-btn">Details</a>
-                            <a href="#" class="course-btn buy-btn">Buy Course</a>
+                            <a href="#" class="course-btn details-btn" data-translate="details_btn">Details</a>
+                            <a href="#" class="course-btn buy-btn" data-translate="buy_btn">Buy Course</a>
                         </div>
                     </div>
                 </div>
@@ -1543,37 +1530,37 @@
     <section class="why-choose" id="why">
         <div class="container">
             <div class="section-title">
-                <h2>Why Choose Me</h2>
-                <p>With nearly 7 years of teaching excellence and prestigious certifications</p>
+                <h2 data-translate="why_title">Why Choose Me</h2>
+                <p data-translate="why_subtitle">With nearly 7 years of teaching excellence and prestigious certifications</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h3>7 Years Experience</h3>
-                    <p>Proven results with thousands of satisfied students</p>
+                    <h3 data-translate="feature1_title">7 Years Experience</h3>
+                    <p data-translate="feature1_desc">Proven results with thousands of satisfied students</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h3>Certified Expertise</h3>
-                    <p>CAE, British Council, and TEFL certified</p>
+                    <h3 data-translate="feature2_title">Certified Expertise</h3>
+                    <p data-translate="feature2_desc">CAE, British Council, and TEFL certified</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-school"></i>
                     </div>
-                    <h3>Reputable School</h3>
-                    <p>Owner of highly respected English school in Moscow</p>
+                    <h3 data-translate="feature3_title">Reputable School</h3>
+                    <p data-translate="feature3_desc">Owner of highly respected English school in Moscow</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Proven Results</h3>
-                    <p>Students achieve fluency in just 3 months</p>
+                    <h3 data-translate="feature4_title">Proven Results</h3>
+                    <p data-translate="feature4_desc">Students achieve fluency in just 3 months</p>
                 </div>
             </div>
         </div>
@@ -1583,50 +1570,50 @@
     <section class="roadmap" id="roadmap">
         <div class="container">
             <div class="section-title">
-                <h2>Roadmap to Excellence</h2>
-                <p>Your journey to becoming an exceptional English tutor</p>
+                <h2 data-translate="roadmap_title">Roadmap to Excellence</h2>
+                <p data-translate="roadmap_subtitle">Your journey to becoming an exceptional English tutor</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="progress-dot">1</div>
                     <div class="timeline-content">
-                        <h3>Foundation Building</h3>
-                        <p>Master English fundamentals through personalized instruction.</p>
+                        <h3 data-translate="step1_title">Foundation Building</h3>
+                        <p data-translate="step1_desc">Master English fundamentals through personalized instruction.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="progress-dot">2</div>
                     <div class="timeline-content">
-                        <h3>Teaching Methodology</h3>
-                        <p>Learn effective techniques and engagement strategies.</p>
+                        <h3 data-translate="step2_title">Teaching Methodology</h3>
+                        <p data-translate="step2_desc">Learn effective techniques and engagement strategies.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="progress-dot">3</div>
                     <div class="timeline-content">
-                        <h3>Specialized Training</h3>
-                        <p>Develop expertise in business English or exam preparation.</p>
+                        <h3 data-translate="step3_title">Specialized Training</h3>
+                        <p data-translate="step3_desc">Develop expertise in business English or exam preparation.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="progress-dot">4</div>
                     <div class="timeline-content">
-                        <h3>Material Development</h3>
-                        <p>Create resources for different learning styles.</p>
+                        <h3 data-translate="step4_title">Material Development</h3>
+                        <p data-translate="step4_desc">Create resources for different learning styles.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="progress-dot">5</div>
                     <div class="timeline-content">
-                        <h3>Practical Experience</h3>
-                        <p>Gain teaching experience with expert guidance.</p>
+                        <h3 data-translate="step5_title">Practical Experience</h3>
+                        <p data-translate="step5_desc">Gain teaching experience with expert guidance.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="progress-dot">6</div>
                     <div class="timeline-content">
-                        <h3>Certification & Launch</h3>
-                        <p>Earn certifications and launch your career.</p>
+                        <h3 data-translate="step6_title">Certification & Launch</h3>
+                        <p data-translate="step6_desc">Earn certifications and launch your career.</p>
                     </div>
                 </div>
             </div>
@@ -1637,12 +1624,12 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Success Stories</h2>
-                <p>Hear from students who transformed their lives with our programs</p>
+                <h2 data-translate="testimonial_title">Success Stories</h2>
+                <p data-translate="testimonial_subtitle">Hear from students who transformed their lives with our programs</p>
             </div>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content" data-translate="testimonial1">
                         "Robert's personalized approach helped me achieve IELTS band 8 in just 3 months. His expertise is unmatched! I've now relocated to Canada."
                     </div>
                     <div class="testimonial-author">
@@ -1651,12 +1638,12 @@
                         </div>
                         <div class="author-info">
                             <h4>Anna Petrova</h4>
-                            <p>Relocated to Canada</p>
+                            <p data-translate="testimonial1_location">Relocated to Canada</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content" data-translate="testimonial2">
                         "The corporate training transformed our team's communication skills. We've seen a 40% improvement in client satisfaction."
                     </div>
                     <div class="testimonial-author">
@@ -1665,12 +1652,12 @@
                         </div>
                         <div class="author-info">
                             <h4>Mikhail Ivanov</h4>
-                            <p>Business Director</p>
+                            <p data-translate="testimonial2_role">Business Director</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-content">
+                    <div class="testimonial-content" data-translate="testimonial3">
                         "The Teacher Training program revolutionized my approach. I went from struggling to having a waiting list within 4 months."
                     </div>
                     <div class="testimonial-author">
@@ -1679,7 +1666,7 @@
                         </div>
                         <div class="author-info">
                             <h4>Elena Sokolova</h4>
-                            <p>English Teacher</p>
+                            <p data-translate="testimonial3_role">English Teacher</p>
                         </div>
                     </div>
                 </div>
@@ -1691,39 +1678,39 @@
     <section class="contact-form" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Request Information</h2>
-                <p>Get in touch to start your English transformation journey</p>
+                <h2 data-translate="contact_title">Request Information</h2>
+                <p data-translate="contact_subtitle">Get in touch to start your English transformation journey</p>
             </div>
             <form>
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="Enter your name">
+                    <label for="name" data-translate="name_label">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" data-translate="name_placeholder">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="Enter your email">
+                    <label for="email" data-translate="email_label">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" data-translate="email_placeholder">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                    <label for="phone" data-translate="phone_label">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" data-translate="phone_placeholder">
                 </div>
                 <div class="form-group">
-                    <label for="interest">Program Interest</label>
+                    <label for="interest" data-translate="interest_label">Program Interest</label>
                     <select id="interest">
-                        <option value="">Select a program</option>
-                        <option value="individual">Individual Tutor Training</option>
-                        <option value="business">Business English</option>
-                        <option value="exam">Exam Preparation</option>
-                        <option value="teacher">Teacher Training</option>
-                        <option value="consult">Consultation for Teachers</option>
-                        <option value="other">Other</option>
+                        <option value="" data-translate="select_option">Select a program</option>
+                        <option value="individual" data-translate="option1">Individual Tutor Training</option>
+                        <option value="business" data-translate="option2">Business English</option>
+                        <option value="exam" data-translate="option3">Exam Preparation</option>
+                        <option value="teacher" data-translate="option4">Teacher Training</option>
+                        <option value="consult" data-translate="option5">Consultation for Teachers</option>
+                        <option value="other" data-translate="option6">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" placeholder="Tell us about your goals"></textarea>
+                    <label for="message" data-translate="message_label">Message</label>
+                    <textarea id="message" placeholder="Tell us about your goals" data-translate="message_placeholder"></textarea>
                 </div>
-                <button type="submit" class="form-btn">Submit Request</button>
+                <button type="submit" class="form-btn" data-translate="submit_btn">Submit Request</button>
             </form>
         </div>
     </section>
@@ -1732,9 +1719,9 @@
     <section class="cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Begin Your Transformation Today</h2>
-                <p>Join hundreds of successful students who have achieved their language goals</p>
-                <a href="#contact" class="btn">Enroll Now</a>
+                <h2 data-translate="cta_title">Begin Your Transformation Today</h2>
+                <p data-translate="cta_subtitle">Join hundreds of successful students who have achieved their language goals</p>
+                <a href="#contact" class="btn" data-translate="enroll_btn">Enroll Now</a>
             </div>
         </div>
     </section>
@@ -1758,7 +1745,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <h3>Robert Nyamugada English Coaching</h3>
+                <h3 data-translate="footer_title">Robert Nyamugada English Coaching</h3>
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -1785,12 +1772,252 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Robert Nyamugada English Coaching. All rights reserved.</p>
+                <p data-translate="copyright">&copy; 2023 Robert Nyamugada English Coaching. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Translation dictionary
+        const translations = {
+            en: {
+                home: "Home",
+                about: "About Me",
+                premium: "Premium Programs",
+                why: "Why Choose Me",
+                roadmap: "Roadmap",
+                stories: "Success Stories",
+                contact: "Contact",
+                hero_title: "Transform Your English with <span class=\"name\">Robert Nyamugada</span>",
+                hero_subtitle: "Premium Coaching for Individuals, Teachers and Corporates",
+                consult_btn: "Free Consultation",
+                signup_btn: "Sign Up Now",
+                about_title: "About Me",
+                about_subtitle: "Your dedicated English coach and educational entrepreneur",
+                about_text1: "Passionate educator and entrepreneur with <span class=\"highlight\">7 years of experience</span> teaching English to children and adults.",
+                about_text2: "Founder of <span class=\"highlight\">QESkids AI</span> (English/Programming school) and <span class=\"highlight\">Cm Services</span> (B2B training).",
+                about_text3: "TEFL certified with expertise in Cambridge, Oxford, and British Council methodologies.",
+                about_text4: "Advanced Russian speaker with certification. Dedicated to helping educators grow.",
+                schedule_btn: "Schedule Consultation",
+                philosophy_title: "Teaching Philosophy",
+                philosophy_subtitle: "Watch my approach to transformative English education",
+                video_text: "Video Presentation Coming Soon",
+                premium_title: "Premium Programs",
+                premium_subtitle: "Exclusive training designed to maximize your English proficiency",
+                course1_title: "Individual Tutor Training",
+                course1_desc: "Personalized guidance for beginners with custom learning paths",
+                course1_duration: "12 weeks",
+                course2_title: "Business English",
+                course2_desc: "Corporate training for professional communication and relations",
+                course2_duration: "8-16 weeks",
+                course3_title: "Exam Preparation",
+                course3_desc: "Specialized coaching for IELTS with proven strategies",
+                course3_duration: "10 weeks",
+                course4_title: "Teachers & Tutor Training",
+                course4_desc: "Program to enhance teaching methodologies and engagement",
+                course4_duration: "16 weeks",
+                course5_title: "One-on-One Teacher Coaching",
+                course5_desc: "Personalized mentorship for educators to refine their skills",
+                course5_duration: "Flexible",
+                course6_title: "Consultation for Teachers",
+                course6_desc: "Expert guidance to help educators attract more clients",
+                course6_duration: "As needed",
+                details_btn: "Details",
+                buy_btn: "Buy Course",
+                why_title: "Why Choose Me",
+                why_subtitle: "With nearly 7 years of teaching excellence and prestigious certifications",
+                feature1_title: "7 Years Experience",
+                feature1_desc: "Proven results with thousands of satisfied students",
+                feature2_title: "Certified Expertise",
+                feature2_desc: "CAE, British Council, and TEFL certified",
+                feature3_title: "Reputable School",
+                feature3_desc: "Owner of highly respected English school in Moscow",
+                feature4_title: "Proven Results",
+                feature4_desc: "Students achieve fluency in just 3 months",
+                roadmap_title: "Roadmap to Excellence",
+                roadmap_subtitle: "Your journey to becoming an exceptional English tutor",
+                step1_title: "Foundation Building",
+                step1_desc: "Master English fundamentals through personalized instruction.",
+                step2_title: "Teaching Methodology",
+                step2_desc: "Learn effective techniques and engagement strategies.",
+                step3_title: "Specialized Training",
+                step3_desc: "Develop expertise in business English or exam preparation.",
+                step4_title: "Material Development",
+                step4_desc: "Create resources for different learning styles.",
+                step5_title: "Practical Experience",
+                step5_desc: "Gain teaching experience with expert guidance.",
+                step6_title: "Certification & Launch",
+                step6_desc: "Earn certifications and launch your career.",
+                testimonial_title: "Success Stories",
+                testimonial_subtitle: "Hear from students who transformed their lives with our programs",
+                testimonial1: "\"Robert's personalized approach helped me achieve IELTS band 8 in just 3 months. His expertise is unmatched! I've now relocated to Canada.\"",
+                testimonial1_location: "Relocated to Canada",
+                testimonial2: "\"The corporate training transformed our team's communication skills. We've seen a 40% improvement in client satisfaction.\"",
+                testimonial2_role: "Business Director",
+                testimonial3: "\"The Teacher Training program revolutionized my approach. I went from struggling to having a waiting list within 4 months.\"",
+                testimonial3_role: "English Teacher",
+                contact_title: "Request Information",
+                contact_subtitle: "Get in touch to start your English transformation journey",
+                name_label: "Full Name",
+                name_placeholder: "Enter your name",
+                email_label: "Email Address",
+                email_placeholder: "Enter your email",
+                phone_label: "Phone Number",
+                phone_placeholder: "Enter your phone number",
+                interest_label: "Program Interest",
+                select_option: "Select a program",
+                option1: "Individual Tutor Training",
+                option2: "Business English",
+                option3: "Exam Preparation",
+                option4: "Teacher Training",
+                option5: "Consultation for Teachers",
+                option6: "Other",
+                message_label: "Message",
+                message_placeholder: "Tell us about your goals",
+                submit_btn: "Submit Request",
+                cta_title: "Begin Your Transformation Today",
+                cta_subtitle: "Join hundreds of successful students who have achieved their language goals",
+                enroll_btn: "Enroll Now",
+                footer_title: "Robert Nyamugada English Coaching",
+                copyright: "&copy; 2023 Robert Nyamugada English Coaching. All rights reserved."
+            },
+            ru: {
+                home: "Главная",
+                about: "Обо мне",
+                premium: "Премиум Программы",
+                why: "Почему Я",
+                roadmap: "Дорожная карта",
+                stories: "Истории Успеха",
+                contact: "Контакты",
+                hero_title: "Преобразите свои знания английского с <span class=\"name\">Робертом Ньямугадой</span>",
+                hero_subtitle: "Премиум коучинг для частных лиц, преподавателей и компаний",
+                consult_btn: "Бесплатная Консультация",
+                signup_btn: "Записаться Сейчас",
+                about_title: "Обо мне",
+                about_subtitle: "Ваш преданный тренер по английскому и образовательный предприниматель",
+                about_text1: "Страстный педагог и предприниматель с <span class=\"highlight\">7-летним опытом</span> преподавания английского детям и взрослым.",
+                about_text2: "Основатель <span class=\"highlight\">QESkids AI</span> (школа английского/программирования) и <span class=\"highlight\">Cm Services</span> (B2B обучение).",
+                about_text3: "Сертифицированный TEFL с опытом работы по методикам Cambridge, Oxford и British Council.",
+                about_text4: "Продвинутый уровень русского языка с сертификацией. Посвящен помощи преподавателям в развитии.",
+                schedule_btn: "Запланировать Консультацию",
+                philosophy_title: "Философия Обучения",
+                philosophy_subtitle: "Посмотрите мой подход к преобразующему обучению английскому",
+                video_text: "Видео Презентация Скоро Будет",
+                premium_title: "Премиум Программы",
+                premium_subtitle: "Эксклюзивное обучение, разработанное для максимального повышения вашего уровня английского",
+                course1_title: "Индивидуальное Обучение",
+                course1_desc: "Персонализированное руководство для начинающих с индивидуальными путями обучения",
+                course1_duration: "12 недель",
+                course2_title: "Деловой Английский",
+                course2_desc: "Корпоративное обучение для профессионального общения и отношений",
+                course2_duration: "8-16 недель",
+                course3_title: "Подготовка к Экзаменам",
+                course3_desc: "Специализированный коучинг для IELTS с проверенными стратегиями",
+                course3_duration: "10 недель",
+                course4_title: "Обучение Преподавателей",
+                course4_desc: "Программа для улучшения методик преподавания и вовлеченности",
+                course4_duration: "16 недель",
+                course5_title: "Персональный Коучинг для Преподавателей",
+                course5_desc: "Индивидуальное наставничество для преподавателей",
+                course5_duration: "Гибкий",
+                course6_title: "Консультация для Преподавателей",
+                course6_desc: "Экспертное руководство по привлечению клиентов",
+                course6_duration: "По необходимости",
+                details_btn: "Подробнее",
+                buy_btn: "Купить Курс",
+                why_title: "Почему Выбирают Меня",
+                why_subtitle: "Почти 7 лет преподавательского мастерства и престижных сертификаций",
+                feature1_title: "7 Лет Опыта",
+                feature1_desc: "Проверенные результаты с тысячами довольных студентов",
+                feature2_title: "Сертифицированный Эксперт",
+                feature2_desc: "Сертификаты CAE, British Council и TEFL",
+                feature3_title: "Репутация Школы",
+                feature3_desc: "Владелец уважаемой школы английского в Москве",
+                feature4_title: "Доказанные Результаты",
+                feature4_desc: "Студенты достигают беглости всего за 3 месяца",
+                roadmap_title: "Дорожная Карта к Совершенству",
+                roadmap_subtitle: "Ваш путь к становлению выдающимся преподавателем английского",
+                step1_title: "Закладка Основ",
+                step1_desc: "Освойте основы английского через персонализированное обучение.",
+                step2_title: "Методика Преподавания",
+                step2_desc: "Изучите эффективные техники и стратегии вовлечения.",
+                step3_title: "Специализированное Обучение",
+                step3_desc: "Развивайте экспертизу в деловом английском или подготовке к экзаменам.",
+                step4_title: "Разработка Материалов",
+                step4_desc: "Создавайте ресурсы для разных стилей обучения.",
+                step5_title: "Практический Опыт",
+                step5_desc: "Получите преподавательский опыт под руководством эксперта.",
+                step6_title: "Сертификация и Старт",
+                step6_desc: "Получите сертификаты и начните карьеру.",
+                testimonial_title: "Истории Успеха",
+                testimonial_subtitle: "Услышьте от студентов, изменивших свою жизнь с нашими программами",
+                testimonial1: "\"Персонализированный подход Роберта помог мне достичь 8 баллов IELTS всего за 3 месяца. Его экспертиза непревзойденна! Теперь я переехал в Канаду.\"",
+                testimonial1_location: "Переехал в Канаду",
+                testimonial2: "\"Корпоративное обучение преобразило навыки общения нашей команды. Мы наблюдаем 40% улучшение удовлетворенности клиентов.\"",
+                testimonial2_role: "Бизнес-директор",
+                testimonial3: "\"Программа обучения преподавателей революционизировала мой подход. Я перешел от трудностей к листу ожидания за 4 месяца.\"",
+                testimonial3_role: "Преподаватель английского",
+                contact_title: "Запросить Информацию",
+                contact_subtitle: "Свяжитесь с нами, чтобы начать путь преобразования вашего английского",
+                name_label: "Полное Имя",
+                name_placeholder: "Введите ваше имя",
+                email_label: "Электронная Почта",
+                email_placeholder: "Введите вашу почту",
+                phone_label: "Телефон",
+                phone_placeholder: "Введите ваш телефон",
+                interest_label: "Интересующая Программа",
+                select_option: "Выберите программу",
+                option1: "Индивидуальное Обучение",
+                option2: "Деловой Английский",
+                option3: "Подготовка к Экзаменам",
+                option4: "Обучение Преподавателей",
+                option5: "Консультация для Преподавателей",
+                option6: "Другое",
+                message_label: "Сообщение",
+                message_placeholder: "Расскажите о ваших целях",
+                submit_btn: "Отправить Запрос",
+                cta_title: "Начните Свое Преобразование Сегодня",
+                cta_subtitle: "Присоединяйтесь к сотням успешных студентов, достигших своих языковых целей",
+                enroll_btn: "Записаться Сейчас",
+                footer_title: "Коучинг по Английскому Роберта Ньямугады",
+                copyright: "&copy; 2023 Коучинг по Английскому Роберта Ньямугады. Все права защищены."
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+        
+        // Function to set language
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update form select options
+            const options = document.querySelectorAll('#interest option');
+            options.forEach(option => {
+                const key = option.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    option.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
         // Sidebar toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const sidebar = document.querySelector('.sidebar');
@@ -1804,6 +2031,14 @@
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
             }
+        });
+
+        // Language toggle
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.dataset.lang;
+                setLanguage(lang);
+            });
         });
 
         // Background audio
@@ -1863,31 +2098,6 @@
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
 
-        // Language toggle
-        const langButtons = document.querySelectorAll('.lang-btn');
-        langButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // In a real implementation, this would change all text content
-                const lang = button.dataset.lang;
-                if(lang === 'ru') {
-                    document.querySelector('title').textContent = "Премиум обучение английскому | Роберт Ньямугада";
-                    document.querySelector('.hero h1').innerHTML = 'Преобразите свои <span class="name">знания английского</span> с Робертом Ньямугадой';
-                    document.querySelector('.hero p').textContent = "Премиум коучинг для частных лиц, преподавателей и компаний";
-                    document.querySelector('.consult-btn').textContent = "Бесплатная консультация";
-                    document.querySelector('.signup-btn').textContent = "Записаться сейчас";
-                } else {
-                    document.querySelector('title').textContent = "Premium English Coaching | Robert Nyamugada";
-                    document.querySelector('.hero h1').innerHTML = 'Transform Your English with <span class="name">Robert Nyamugada</span>';
-                    document.querySelector('.hero p').textContent = "Premium Coaching for Individuals, Teachers and Corporates";
-                    document.querySelector('.consult-btn').textContent = "Free Consultation";
-                    document.querySelector('.signup-btn').textContent = "Sign Up Now";
-                }
-            });
-        });
-
         // Floating animation for elements
         const floatingElements = document.querySelectorAll('.feature-icon, .btn');
         floatingElements.forEach(el => {
@@ -1901,7 +2111,9 @@
 
         // Contact icon action
         document.querySelector('.contact-icon').addEventListener('click', () => {
-            alert('Call Robert: +7 (910) 448-3756');
+            alert(currentLang === 'en' 
+                ? 'Call Robert: +7 (910) 448-3756' 
+                : 'Позвоните Роберту: +7 (910) 448-3756');
         });
     </script>
 </body>
